@@ -2,9 +2,9 @@ import HouseIcon from "../assets/house";
 
 function AppHeader() {
   return (
-    <div className="bg-primary p-4 h-16 flex items-center">
-      <HouseIcon className="fill-white h-full" />
-      <h1 className="text-xl font-bold text-white mx-auto">
+    <div className="flex h-16 items-center bg-primary p-4">
+      <HouseIcon className="h-full fill-white" />
+      <h1 className="mx-auto text-xl font-bold text-white">
         JG Planning Poker
       </h1>
     </div>
