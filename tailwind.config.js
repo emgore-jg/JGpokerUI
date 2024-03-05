@@ -6,6 +6,19 @@ export default {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: ["light", "dark", "nord"],
+    themes: [
+      {
+        jahnelgroup: {
+          primary: "#00bdff",
+          secondary: "#0089d0",
+          accent: "#0c465f",
+          neutral: "#fafafa",
+          "base-100": "#161719",
+        },
+      },
+      "light",
+      "dark",
+      "nord",
+    ],
   },
 };
