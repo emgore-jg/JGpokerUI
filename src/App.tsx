@@ -1,7 +1,7 @@
-import Home from "./screens/Home";
+import AppHeader from "./screens/AppHeader";
 
 function App() {
-  return <Home />;
+  return <AppHeader />;
 }
 
 export default App;

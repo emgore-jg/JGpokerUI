@@ -1,6 +1,6 @@
 import HouseIcon from "../assets/house";
 
-function Home() {
+function AppHeader() {
   return (
     <div className="bg-primary p-4 h-16 flex items-center">
       <HouseIcon className="fill-white h-full" />
@@ -11,4 +11,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default AppHeader;
