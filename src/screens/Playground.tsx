@@ -1,10 +1,9 @@
 const Playground = () => {
   return (
-    <section id="playground">
-      <h2>A place to develop and test components!</h2>
-      <summary id="cardExample">
-        <h4>Example Card</h4>
-      </summary>
+    <section id="playground" className="m-4 flex flex-col">
+      <h1 className="mx-auto text-xl">
+        A place to develop and test components!
+      </h1>
     </section>
   );
 };
