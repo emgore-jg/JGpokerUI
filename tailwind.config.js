@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      maxHeight: {
+        "50vh": "50vh",
+      },
+    },
   },
   plugins: [require("daisyui")],
   daisyui: {
