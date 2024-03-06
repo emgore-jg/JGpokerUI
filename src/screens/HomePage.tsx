@@ -95,7 +95,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 p-4">
+    <section id='homePage' className="flex flex-col gap-4 p-4 w-full h-full">
       <ModalButton
         modalID="create-card-modal"
         buttonText={
@@ -157,7 +157,7 @@ const HomePage: React.FC = () => {
           </Card>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
