@@ -87,7 +87,7 @@ const HomePage: React.FC = () => {
             <label className="form-control w-full">
               <span className="label-text">Issue #*</span>
               <input
-                type="text"
+                type="number"
                 className="input input-bordered w-full"
                 id="issueNum"
               />
@@ -107,7 +107,7 @@ const HomePage: React.FC = () => {
             </button>
           </div>
         }
-      ></ModalButton>
+      />
       <div className="flex flex-wrap justify-center gap-4">
         {cardData.map((data, index) => (
           <Card className="h-52" key={index}>
