@@ -17,7 +17,7 @@ function ModalButton({ buttonText, onClick, modalContent }: props) {
   return (
     <>
       <button
-        className="btn btn-primary w-fit fill-neutral text-neutral"
+        className="btn btn-primary w-fit fill-primary-content text-primary-content"
         onClick={() => {
           handleClick();
         }}

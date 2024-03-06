@@ -3,8 +3,8 @@ import HouseIcon from "../assets/house";
 function AppHeader() {
   return (
     <div className="sticky top-0 z-10 flex h-16 items-center bg-accent p-4">
-      <HouseIcon className="h-full fill-neutral" />
-      <h1 className="mx-auto text-xl font-bold text-neutral">
+      <HouseIcon className="h-full fill-accent-content" />
+      <h1 className="mx-auto text-xl font-bold text-accent-content">
         JG Planning Poker
       </h1>
     </div>
