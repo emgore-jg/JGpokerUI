@@ -6,6 +6,7 @@ import HomePage from "./screens/HomePage";
 import { createBrowserRouter , RouterProvider} from "react-router-dom";
 import Playground from "./screens/Playground.tsx";
 
+// TODO: Implement nav info as an array, to be passed to navBar/other nav solution
 // interface NavInfo {
 //   id: string;
 //   children: React.ReactNode,
@@ -39,8 +40,3 @@ root.render(
       <RouterProvider router={router} ></RouterProvider>
     </React.StrictMode>
 );
-// ReactDOM.createRoot(document.getElementById("root")!).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>,
-// );
