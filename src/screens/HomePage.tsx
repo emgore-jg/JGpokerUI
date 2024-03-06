@@ -148,6 +148,8 @@ const HomePage: React.FC = () => {
             title={data.title}
             issueNum={data.issueNum}
             description={data.description}
+            isCompact={true}
+            vote={"XS"}
           />
         ))}
       </div>
