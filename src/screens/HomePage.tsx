@@ -143,15 +143,12 @@ const HomePage: React.FC = () => {
       />
       <div className="flex flex-wrap justify-center gap-4">
         {cardData.map((data, index) => (
-          <Card className="h-52" key={index}>
-            <h1 className="text-lg capitalize ">{data.title}</h1>
-            <h2 className="text-xs italic text-gray-500">
-              TIX-{data.issueNum}
-            </h2>
-            <p className="text-md overflow-scroll whitespace-pre-wrap">
-              {data.description}
-            </p>
-          </Card>
+          <Card
+            key={index}
+            title={data.title}
+            issueNum={data.issueNum}
+            description={data.description}
+          />
         ))}
       </div>
     </div>
