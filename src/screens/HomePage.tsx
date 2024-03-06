@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PlusIcon from "../assets/plus";
 import Card from "../components/Card";
 import ModalButton from "../components/ModalButton";
+import Button from "../components/Button";
 
 interface CardData {
   title: string;
@@ -130,16 +131,12 @@ const HomePage: React.FC = () => {
               ></textarea>
             </label>
             <div className="flex flex-row justify-between">
-              {" "}
-              <button className="btn btn-error w-fit" onClick={handleAbortCard}>
+              <Button className="btn-error" onClick={handleAbortCard}>
                 Cancel
-              </button>
-              <button
-                className="btn btn-primary w-fit"
-                onClick={handleCreateCard}
-              >
+              </Button>
+              <Button className="btn-primary" onClick={handleCreateCard}>
                 Create
-              </button>
+              </Button>
             </div>
           </div>
         }
