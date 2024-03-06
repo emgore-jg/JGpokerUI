@@ -1,5 +1,6 @@
 import PlusIcon from "../assets/plus";
 import Card from "../components/Card";
+import ModalButton from "../components/ModalButton";
 
 function AppHeader() {
   var n = 100;
@@ -11,9 +12,19 @@ function AppHeader() {
 
   return (
     <div className=" flex flex-col gap-4 p-4">
-      <button className="btn btn-primary w-fit fill-neutral text-neutral">
-        <PlusIcon className="h-1/2" /> Create Card
-      </button>
+      <ModalButton
+        buttonText={
+          <>
+            <PlusIcon className="h-1/2" /> Create Card
+          </>
+        }
+        modalContent={
+          <>
+            <h3 className="text-lg font-bold">Hello!</h3>
+            <p className="py-4">Press ESC key or click on ✕ button to close</p>
+          </>
+        }
+      ></ModalButton>
       <div className="flex flex-wrap justify-center gap-4">{cards}</div>
     </div>
   );
