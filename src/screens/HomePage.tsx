@@ -1,17 +1,48 @@
+import React, { useState } from "react";
 import PlusIcon from "../assets/plus";
 import Card from "../components/Card";
 import ModalButton from "../components/ModalButton";
 
-function AppHeader() {
-  var n = 100;
-  const cards = [];
+interface CardData {
+  title: string;
+  issueNum: number;
+  description: string;
+}
 
-  for (let i = 0; i < n; i++) {
-    cards.push(<Card key={i}>card #{i + 1} description</Card>);
-  }
-  var modalID = "create-card-modal";
+const HomePage: React.FC = () => {
+  const [cardData, setCardData] = useState<CardData[]>([]);
+
+  const handleCreateCard = () => {
+    const titleInput = document.getElementById("title") as HTMLInputElement;
+    const issueNumInput = document.getElementById(
+      "issueNum",
+    ) as HTMLInputElement;
+    const descriptionInput = document.getElementById(
+      "description",
+    ) as HTMLInputElement;
+
+    if (titleInput && issueNumInput && descriptionInput) {
+      const title = titleInput.value;
+      const issueNum = parseInt(issueNumInput.value);
+      const description = descriptionInput.value;
+
+      const newData: CardData = {
+        title: title,
+        issueNum: issueNum,
+        description: description,
+      };
+
+      setCardData((prevData) => [...prevData, newData]);
+
+      const modal = document.getElementById(
+        "create-card-modal",
+      ) as HTMLDialogElement;
+      modal?.close();
+    }
+  };
+
   return (
-    <div className=" flex flex-col gap-4 p-4">
+    <div className="flex flex-col gap-4 p-4">
       <ModalButton
         modalID="create-card-modal"
         buttonText={
@@ -24,34 +55,51 @@ function AppHeader() {
             <h1 className="mb-4 text-lg font-bold">Create Card</h1>
             <label className="form-control w-full">
               <span className="label-text">Title</span>
-              <input type="text" className="input input-bordered w-full" />
+              <input
+                type="text"
+                className="input input-bordered w-full"
+                id="title"
+              />
             </label>
             <label className="form-control w-full">
               <span className="label-text">Issue #</span>
-              <input type="text" className="input input-bordered w-full" />
+              <input
+                type="text"
+                className="input input-bordered w-full"
+                id="issueNum"
+              />
             </label>
             <label className="form-control w-full">
               <span className="label-text">Description</span>
-              <textarea className="max-h-50vh textarea textarea-bordered"></textarea>
+              <textarea
+                className="max-h-50vh textarea textarea-bordered"
+                id="description"
+              ></textarea>
             </label>
             <button
               className="btn btn-primary ml-auto w-fit"
-              onClick={() => {
-                console.log("clicked create");
-                const modal = document.getElementById(
-                  modalID,
-                ) as HTMLDialogElement;
-                modal?.close();
-              }}
+              onClick={handleCreateCard}
             >
               Create
             </button>
           </div>
         }
       ></ModalButton>
-      <div className="flex flex-wrap justify-center gap-4">{cards}</div>
+      <div className="flex flex-wrap justify-center gap-4">
+        {cardData.map((data, index) => (
+          <Card className="h-52" key={index}>
+            <h1 className="text-lg capitalize ">{data.title}</h1>
+            <h2 className="text-xs italic text-gray-500">
+              TIX-{data.issueNum}
+            </h2>
+            <p className="text-md overflow-scroll whitespace-pre-wrap">
+              {data.description}
+            </p>
+          </Card>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default AppHeader;
+export default HomePage;
