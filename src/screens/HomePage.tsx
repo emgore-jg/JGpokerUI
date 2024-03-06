@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import PlusIcon from "../assets/plus";
-import Card from "../components/Card";
 import ModalButton from "../components/ModalButton";
+import Button from "../components/Button";
+import CardSummary from "../components/CardSummary";
 
 interface CardData {
   title: string;
   issueNum: number;
   description: string;
+  vote: string;
 }
 
 const HomePage: React.FC = () => {
@@ -81,6 +83,7 @@ const HomePage: React.FC = () => {
         title: title,
         issueNum: issueNum,
         description: description,
+        vote: "LG",
       };
 
       setCardData((prevData) => [...prevData, newData]);
@@ -130,31 +133,26 @@ const HomePage: React.FC = () => {
               ></textarea>
             </label>
             <div className="flex flex-row justify-between">
-              {" "}
-              <button className="btn btn-error w-fit" onClick={handleAbortCard}>
+              <Button className="btn-error" onClick={handleAbortCard}>
                 Cancel
-              </button>
-              <button
-                className="btn btn-primary w-fit"
-                onClick={handleCreateCard}
-              >
+              </Button>
+              <Button className="btn-primary" onClick={handleCreateCard}>
                 Create
-              </button>
+              </Button>
             </div>
           </div>
         }
       />
       <div className="flex flex-wrap justify-center gap-4">
         {cardData.map((data, index) => (
-          <Card className="h-52" key={index}>
-            <h1 className="text-lg capitalize ">{data.title}</h1>
-            <h2 className="text-xs italic text-gray-500">
-              TIX-{data.issueNum}
-            </h2>
-            <p className="text-md overflow-scroll whitespace-pre-wrap">
-              {data.description}
-            </p>
-          </Card>
+          <CardSummary
+            key={index}
+            title={data.title}
+            issueNum={data.issueNum}
+            description={data.description}
+            isCompact={true}
+            vote={data.vote}
+          />
         ))}
       </div>
     </section>

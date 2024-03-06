@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import Button from "./Button";
 
 interface props {
   modalID: string;
@@ -17,14 +18,14 @@ function ModalButton({ modalID, buttonText, onClick, modalContent }: props) {
 
   return (
     <>
-      <button
-        className="btn btn-primary w-fit fill-primary-content"
+      <Button
+        className="btn-primary fill-primary-content"
         onClick={() => {
           handleClick();
         }}
       >
         {buttonText}
-      </button>
+      </Button>
       <dialog id={modalID} className=" modal bg-black bg-opacity-60">
         <div className="modal-box">{modalContent}</div>
       </dialog>
