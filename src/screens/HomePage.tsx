@@ -8,6 +8,7 @@ interface CardData {
   title: string;
   issueNum: number;
   description: string;
+  vote: string;
 }
 
 const HomePage: React.FC = () => {
@@ -82,6 +83,7 @@ const HomePage: React.FC = () => {
         title: title,
         issueNum: issueNum,
         description: description,
+        vote: "LG",
       };
 
       setCardData((prevData) => [...prevData, newData]);
@@ -149,7 +151,7 @@ const HomePage: React.FC = () => {
             issueNum={data.issueNum}
             description={data.description}
             isCompact={true}
-            vote={"XS"}
+            vote={data.vote}
           />
         ))}
       </div>
