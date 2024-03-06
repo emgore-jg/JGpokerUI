@@ -98,7 +98,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <section id='homePage' className="flex flex-col gap-4 p-4 w-full h-full">
+    <section id="homePage" className="flex h-full w-full flex-col gap-4 p-4">
       <ModalButton
         modalID="create-card-modal"
         buttonText={
@@ -132,6 +132,19 @@ const HomePage: React.FC = () => {
                 id="description"
               ></textarea>
             </label>
+            <label className="form-control w-full">
+              <span className="label-text">Vote*</span>
+              <select className="select select-bordered w-full">
+                <option disabled selected>
+                  T-shirt Size
+                </option>
+                <option>XS</option>
+                <option>SM</option>
+                <option>LG</option>
+                <option>XL</option>
+              </select>
+            </label>
+
             <div className="flex flex-row justify-between">
               <Button className="btn-error" onClick={handleAbortCard}>
                 Cancel
