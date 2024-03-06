@@ -12,6 +12,34 @@ interface CardData {
 const HomePage: React.FC = () => {
   const [cardData, setCardData] = useState<CardData[]>([]);
 
+  const clearCard = () => {
+    const titleInput = document.getElementById("title") as HTMLInputElement;
+    const issueNumInput = document.getElementById(
+      "issueNum",
+    ) as HTMLInputElement;
+    const descriptionInput = document.getElementById(
+      "description",
+    ) as HTMLInputElement;
+
+    // Reset input fields
+    titleInput.value = "";
+    issueNumInput.value = "";
+    descriptionInput.value = "";
+
+    //remove error borders
+    titleInput.classList.remove("input-error");
+    issueNumInput.classList.remove("input-error");
+    descriptionInput.classList.remove("textarea-error");
+  };
+
+  const handleAbortCard = () => {
+    clearCard();
+    const modal = document.getElementById(
+      "create-card-modal",
+    ) as HTMLDialogElement;
+    modal?.close();
+  };
+
   const handleCreateCard = () => {
     const titleInput = document.getElementById("title") as HTMLInputElement;
     const issueNumInput = document.getElementById(
@@ -57,6 +85,8 @@ const HomePage: React.FC = () => {
 
       setCardData((prevData) => [...prevData, newData]);
 
+      clearCard();
+
       const modal = document.getElementById(
         "create-card-modal",
       ) as HTMLDialogElement;
@@ -99,12 +129,18 @@ const HomePage: React.FC = () => {
                 id="description"
               ></textarea>
             </label>
-            <button
-              className="btn btn-primary ml-auto w-fit"
-              onClick={handleCreateCard}
-            >
-              Create
-            </button>
+            <div className="flex flex-row justify-between">
+              {" "}
+              <button className="btn btn-error w-fit" onClick={handleAbortCard}>
+                Cancel
+              </button>
+              <button
+                className="btn btn-primary w-fit"
+                onClick={handleCreateCard}
+              >
+                Create
+              </button>
+            </div>
           </div>
         }
       />
