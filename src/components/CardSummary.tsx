@@ -7,7 +7,7 @@ interface props extends React.AllHTMLAttributes<HTMLDivElement> {
   vote?: string;
 }
 
-function Card({
+function CardSummary({
   className,
   title,
   issueNum,
@@ -36,4 +36,4 @@ function Card({
     </div>
   );
 }
-export default Card;
+export default CardSummary;

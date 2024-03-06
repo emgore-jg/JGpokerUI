@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import PlusIcon from "../assets/plus";
-import Card from "../components/Card";
 import ModalButton from "../components/ModalButton";
 import Button from "../components/Button";
+import CardSummary from "../components/CardSummary";
 
 interface CardData {
   title: string;
@@ -143,7 +143,7 @@ const HomePage: React.FC = () => {
       />
       <div className="flex flex-wrap justify-center gap-4">
         {cardData.map((data, index) => (
-          <Card
+          <CardSummary
             key={index}
             title={data.title}
             issueNum={data.issueNum}
