@@ -1,11 +1,13 @@
 import AppHeader from "./screens/AppHeader";
-import HomePage from "./screens/HomePage";
 
-function App() {
+interface AppLayout {
+  children: React.ReactNode;
+}
+function App( {children}: AppLayout) {
   return (
     <div className="flex h-screen flex-col">
       <AppHeader />
-      <HomePage />
+      {children}
     </div>
   );
 }
