@@ -13,7 +13,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
+    // "types": ["node"], //allow process.env references
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
