@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import PlusIcon from "../assets/plus";
+import PlusIcon from "../svgs/plus";
 import ModalButton from "../components/ModalButton";
-import Button from "../components/Button";
+import Button from "../components/basics/Button";
 import CardSummary from "../components/CardSummary";
+import Input from "../components/basics/Input";
+import Textarea from "../components/basics/Textarea";
+import Select from "../components/basics/Select";
 
 interface CardData {
   title: string;
@@ -78,7 +81,7 @@ const HomePage: React.FC = () => {
       descriptionInput.classList.remove("textarea-error");
     }
 
-    if (voteSelect && voteSelect.value.trim() === "T-shirt Size") {
+    if (voteSelect && voteSelect.selectedIndex === 0) {
       voteSelect.classList.add("select-error");
       isValid = false;
     } else {
@@ -123,38 +126,23 @@ const HomePage: React.FC = () => {
             <h1 className="mb-4 text-lg font-bold">Create Card</h1>
             <label className="form-control w-full">
               <span className="label-text">Title*</span>
-              <input
-                type="text"
-                className="input input-bordered w-full"
-                id="title"
-              />
+              <Input type="text" id="title" />
             </label>
             <label className="form-control w-full">
               <span className="label-text">Issue #*</span>
-              <input
-                type="number"
-                className="input input-bordered w-full"
-                id="issueNum"
-              />
+              <Input type="number" id="issueNum" />
             </label>
             <label className="form-control w-full">
               <span className="label-text">Description*</span>
-              <textarea
-                className="max-h-50vh textarea textarea-bordered"
-                id="description"
-              ></textarea>
+              <Textarea id="description" className="max-h-50vh" />
             </label>
             <label className="form-control w-full">
               <span className="label-text">Vote*</span>
-              <select className="select select-bordered w-full" id="vote">
-                <option disabled selected>
-                  T-shirt Size
-                </option>
-                <option>XS</option>
-                <option>SM</option>
-                <option>LG</option>
-                <option>XL</option>
-              </select>
+              <Select
+                id="vote"
+                options={["T-shirt Size", "XS", "SM", "MD", "LG", "XL"]}
+                disableFirst={true}
+              />
             </label>
 
             <div className="flex flex-row justify-between">
