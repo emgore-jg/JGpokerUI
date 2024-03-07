@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PlusIcon from "../assets/plus";
+import PlusIcon from "../svgs/plus";
 import ModalButton from "../components/ModalButton";
 import Button from "../components/Button";
 import CardSummary from "../components/CardSummary";
@@ -98,7 +98,7 @@ const HomePage: React.FC = () => {
   };
 
   return (
-    <section id='homePage' className="flex flex-col gap-4 p-4 w-full h-full">
+    <section id="homePage" className="flex h-full w-full flex-col gap-4 p-4">
       <ModalButton
         modalID="create-card-modal"
         buttonText={

@@ -1,4 +1,4 @@
-import HouseIcon from "../assets/house";
+import HouseIcon from "../svgs/house";
 
 function AppHeader() {
   return (
