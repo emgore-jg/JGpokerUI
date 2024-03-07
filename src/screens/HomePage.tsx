@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import PlusIcon from "../svgs/plus";
 import ModalButton from "../components/ModalButton";
-import Button from "../components/Button";
+import Button from "../components/basics/Button";
 import CardSummary from "../components/CardSummary";
-import Input from "../components/Input";
-import Textarea from "../components/Textarea";
+import Input from "../components/basics/Input";
+import Textarea from "../components/basics/Textarea";
 
 interface CardData {
   title: string;
