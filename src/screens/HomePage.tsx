@@ -3,6 +3,7 @@ import PlusIcon from "../svgs/plus";
 import ModalButton from "../components/ModalButton";
 import Button from "../components/Button";
 import CardSummary from "../components/CardSummary";
+import Input from "../components/Input";
 
 interface CardData {
   title: string;
@@ -111,19 +112,11 @@ const HomePage: React.FC = () => {
             <h1 className="mb-4 text-lg font-bold">Create Card</h1>
             <label className="form-control w-full">
               <span className="label-text">Title*</span>
-              <input
-                type="text"
-                className="input input-bordered w-full"
-                id="title"
-              />
+              <Input type="text" id="title"></Input>
             </label>
             <label className="form-control w-full">
               <span className="label-text">Issue #*</span>
-              <input
-                type="number"
-                className="input input-bordered w-full"
-                id="issueNum"
-              />
+              <Input type="number" id="issueNum"></Input>
             </label>
             <label className="form-control w-full">
               <span className="label-text">Description*</span>
