@@ -1,4 +1,6 @@
 import Button from "./basics/Button";
+import Select from "./basics/Select";
+import Textarea from "./basics/Textarea";
 
 interface props extends React.AllHTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -28,20 +30,14 @@ function CardDetails({ className, title, issueNum, description }: props) {
       </p>
       <label className="form-control w-full">
         <span className="label-text text-neutral-content">Vote*</span>
-        <select className="select select-bordered w-fit bg-gray-200">
-          <option selected>Pass/Abstain</option>
-          <option>XS</option>
-          <option>SM</option>
-          <option>LG</option>
-          <option>XL</option>
-        </select>
+        <Select
+          className="w-fit bg-gray-200"
+          options={["Pass/Abstain", "XS", "SM", "MD", "LG", "XL"]}
+        />
       </label>
       <label className="form-control w-full flex-1">
         <span className="label-text text-neutral-content">Explanation*</span>
-        <textarea
-          className="textarea flex-1 resize-none bg-gray-200"
-          id="description"
-        ></textarea>
+        <Textarea className="flex-1 resize-none bg-gray-200" id="description" />
       </label>
       <Button className="ml-auto">Submit</Button>
     </div>
