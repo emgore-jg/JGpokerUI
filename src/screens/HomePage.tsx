@@ -4,6 +4,7 @@ import ModalButton from "../components/ModalButton";
 import Button from "../components/Button";
 import CardSummary from "../components/CardSummary";
 import Input from "../components/Input";
+import Textarea from "../components/Textarea";
 
 interface CardData {
   title: string;
@@ -112,18 +113,15 @@ const HomePage: React.FC = () => {
             <h1 className="mb-4 text-lg font-bold">Create Card</h1>
             <label className="form-control w-full">
               <span className="label-text">Title*</span>
-              <Input type="text" id="title"></Input>
+              <Input type="text" id="title" />
             </label>
             <label className="form-control w-full">
               <span className="label-text">Issue #*</span>
-              <Input type="number" id="issueNum"></Input>
+              <Input type="number" id="issueNum" />
             </label>
             <label className="form-control w-full">
               <span className="label-text">Description*</span>
-              <textarea
-                className="max-h-50vh textarea textarea-bordered"
-                id="description"
-              ></textarea>
+              <Textarea id="description" className="max-h-50vh" />
             </label>
             <div className="flex flex-row justify-between">
               <Button className="btn-error" onClick={handleAbortCard}>
