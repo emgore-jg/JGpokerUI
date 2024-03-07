@@ -22,16 +22,19 @@ const HomePage: React.FC = () => {
     const descriptionInput = document.getElementById(
       "description",
     ) as HTMLInputElement;
+    const voteSelect = document.getElementById("vote") as HTMLSelectElement;
 
     // Reset input fields
     titleInput.value = "";
     issueNumInput.value = "";
     descriptionInput.value = "";
+    voteSelect.selectedIndex = 0;
 
     //remove error borders
     titleInput.classList.remove("input-error");
     issueNumInput.classList.remove("input-error");
     descriptionInput.classList.remove("textarea-error");
+    voteSelect.classList.remove("select-error");
   };
 
   const handleAbortCard = () => {
@@ -50,6 +53,7 @@ const HomePage: React.FC = () => {
     const descriptionInput = document.getElementById(
       "description",
     ) as HTMLInputElement;
+    const voteSelect = document.getElementById("vote") as HTMLSelectElement;
 
     let isValid = true;
 
@@ -74,16 +78,24 @@ const HomePage: React.FC = () => {
       descriptionInput.classList.remove("textarea-error");
     }
 
+    if (voteSelect && voteSelect.value.trim() === "T-shirt Size") {
+      voteSelect.classList.add("select-error");
+      isValid = false;
+    } else {
+      voteSelect.classList.remove("select-error");
+    }
+
     if (isValid) {
       const title = titleInput.value;
       const issueNum = parseInt(issueNumInput.value);
       const description = descriptionInput.value;
+      const vote = voteSelect.value;
 
       const newData: CardData = {
         title: title,
         issueNum: issueNum,
         description: description,
-        vote: "LG",
+        vote: vote,
       };
 
       setCardData((prevData) => [...prevData, newData]);
@@ -134,7 +146,7 @@ const HomePage: React.FC = () => {
             </label>
             <label className="form-control w-full">
               <span className="label-text">Vote*</span>
-              <select className="select select-bordered w-full">
+              <select className="select select-bordered w-full" id="vote">
                 <option disabled selected>
                   T-shirt Size
                 </option>
@@ -163,7 +175,7 @@ const HomePage: React.FC = () => {
             title={data.title}
             issueNum={data.issueNum}
             description={data.description}
-            isCompact={true}
+            //isCompact={true}
             vote={data.vote}
           />
         ))}
