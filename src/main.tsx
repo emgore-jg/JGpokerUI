@@ -6,6 +6,7 @@ import "./index.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Playground from "./screens/Playground.tsx";
+import VotingPage from "./screens/VotingPage.tsx";
 
 // TODO: Implement nav info as an array, to be passed to navBar/other nav solution
 // interface NavInfo {
@@ -23,6 +24,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <App children={<HomePage />} />,
     children: [{ path: "/home" }],
+  },
+  {
+    path: "/voting",
+    element: <App children={<VotingPage />} />,
+    children: [],
   },
   {
     path: "/playground",
