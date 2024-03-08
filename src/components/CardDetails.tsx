@@ -1,3 +1,4 @@
+import Timer from "./Timer";
 import Button from "./basics/Button";
 import Select from "./basics/Select";
 import Textarea from "./basics/Textarea";
@@ -21,9 +22,7 @@ function CardDetails({ className, title, issueNum, description }: props) {
           <h1 className="text-2xl capitalize ">{title}</h1>
           <h2 className="text-sm italic text-gray-500">TIX-{issueNum}</h2>
         </div>
-        <div className="-mr-4 -mt-4 mb-4 ml-4 h-fit rounded-bl-2xl bg-primary p-4">
-          placeholder for timer
-        </div>
+        <Timer />
       </div>
       <p className="text-md h-1/4 overflow-scroll whitespace-pre-wrap">
         {description}
