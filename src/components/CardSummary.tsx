@@ -3,8 +3,8 @@ interface props extends React.AllHTMLAttributes<HTMLDivElement> {
   title: string;
   issueNum: number;
   description: string;
-  isCompact?: boolean;
   vote?: string;
+  isCompact?: boolean;
 }
 
 function CardSummary({
@@ -12,16 +12,14 @@ function CardSummary({
   title,
   issueNum,
   description,
-  isCompact = false,
   vote,
+  isCompact = false,
 }: props) {
   return (
     <div
-      className={`card flex w-96 flex-row overflow-hidden bg-neutral text-neutral-content ${isCompact ? "h-fit" : "h-52"} ${className}`}
+      className={`card flex w-96 max-w-full flex-row bg-neutral text-neutral-content ${vote ? "overflow-hidden" : ""} ${isCompact ? "h-fit" : "h-52"} ${className}`}
     >
-      <div
-        className={`m-4 flex border-2 ${vote ? "w-72" : "w-[22rem]"} flex-col`}
-      >
+      <div className={`m-4 flex ${vote ? "w-72" : "w-[22rem]"} flex-col`}>
         <h1 className="break-words text-lg capitalize">{title}</h1>
         <h2 className="text-xs italic text-gray-500">TIX-{issueNum}</h2>
         {!isCompact && (
