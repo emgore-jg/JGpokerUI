@@ -7,13 +7,6 @@ import Input from "../components/basics/Input";
 import Textarea from "../components/basics/Textarea";
 import Select from "../components/basics/Select";
 
-interface CardData {
-  title: string;
-  issueNum: number;
-  description: string;
-  vote: string;
-}
-
 const HomePage: React.FC = () => {
   const [cardData, setCardData] = useState<CardData[]>([]);
 
@@ -160,11 +153,8 @@ const HomePage: React.FC = () => {
         {cardData.map((data, index) => (
           <CardSummary
             key={index}
-            title={data.title}
-            issueNum={data.issueNum}
-            description={data.description}
+            cardData={data}
             //isCompact={true}
-            vote={data.vote}
           />
         ))}
       </div>

@@ -1,7 +1,7 @@
 import CardSummary from "./CardSummary";
 
 interface props extends React.AllHTMLAttributes<HTMLDivElement> {
-  cards: any[];
+  cards: CardData[];
 }
 
 function VoteQueue({ className = "", cards, ...rest }: props) {
@@ -12,13 +12,7 @@ function VoteQueue({ className = "", cards, ...rest }: props) {
     >
       <p>{cards.length} cards total</p>
       {cards.map((data, index) => (
-        <CardSummary
-          key={index}
-          title={data.title}
-          issueNum={data.issueNum}
-          description={data.description}
-          isCompact={true}
-        />
+        <CardSummary key={index} cardData={data} isCompact={true} />
       ))}
     </div>
   );
