@@ -6,6 +6,7 @@ import CardSummary from "../components/CardSummary";
 import Input from "../components/basics/Input";
 import Textarea from "../components/basics/Textarea";
 import Select from "../components/basics/Select";
+import PlayIcon from "../svgs/play";
 
 const HomePage: React.FC = () => {
   const [cardData, setCardData] = useState<CardData[]>([]);
@@ -107,48 +108,60 @@ const HomePage: React.FC = () => {
 
   return (
     <section id="homePage" className="flex h-full w-full flex-col gap-4 p-4">
-      <ModalButton
-        modalID="create-card-modal"
-        buttonText={
-          <>
-            <PlusIcon className="h-1/2" /> Create Card
-          </>
-        }
-        modalContent={
-          <div className="flex max-h-screen flex-col gap-2">
-            <h1 className="mb-4 text-lg font-bold">Create Card</h1>
-            <label className="form-control w-full">
-              <span className="label-text">Title*</span>
-              <Input type="text" id="title" />
-            </label>
-            <label className="form-control w-full">
-              <span className="label-text">Issue #*</span>
-              <Input type="number" id="issueNum" />
-            </label>
-            <label className="form-control w-full">
-              <span className="label-text">Description*</span>
-              <Textarea id="description" className="max-h-50vh" />
-            </label>
-            <label className="form-control w-full">
-              <span className="label-text">Vote*</span>
-              <Select
-                id="vote"
-                options={["T-shirt Size", "XS", "SM", "MD", "LG", "XL"]}
-                disableFirst={true}
-              />
-            </label>
+      <div className="flex gap-4">
+        <ModalButton
+          modalID="create-card-modal"
+          buttonText={
+            <>
+              <PlusIcon className="h-1/2" /> Create Card
+            </>
+          }
+          modalContent={
+            <div className="flex max-h-screen flex-col gap-2">
+              <h1 className="mb-4 text-lg font-bold">Create Card</h1>
+              <label className="form-control w-full">
+                <span className="label-text">Title*</span>
+                <Input type="text" id="title" />
+              </label>
+              <label className="form-control w-full">
+                <span className="label-text">Issue #*</span>
+                <Input type="number" id="issueNum" />
+              </label>
+              <label className="form-control w-full">
+                <span className="label-text">Description*</span>
+                <Textarea id="description" className="max-h-50vh" />
+              </label>
+              <label className="form-control w-full">
+                <span className="label-text">Vote*</span>
+                <Select
+                  id="vote"
+                  options={["T-shirt Size", "XS", "SM", "MD", "LG", "XL"]}
+                  disableFirst={true}
+                />
+              </label>
 
-            <div className="flex flex-row justify-between">
-              <Button className="btn-error" onClick={handleAbortCard}>
-                Cancel
-              </Button>
-              <Button className="btn-primary" onClick={handleCreateCard}>
-                Create
-              </Button>
+              <div className="flex flex-row justify-between">
+                <Button className="btn-error" onClick={handleAbortCard}>
+                  Cancel
+                </Button>
+                <Button className="btn-primary" onClick={handleCreateCard}>
+                  Create
+                </Button>
+              </div>
             </div>
-          </div>
-        }
-      />
+          }
+        />
+        <Button
+          className="btn-primary"
+          onClick={() => {
+            window.location.href = "/voting";
+          }}
+        >
+          <PlayIcon className="h-1/2" />
+          Start Game
+        </Button>
+      </div>
+
       <div className="flex flex-wrap justify-center gap-4">
         {cardData.map((data, index) => (
           <CardSummary

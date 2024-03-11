@@ -19,6 +19,7 @@ function Select({
           key={index}
           value={option}
           disabled={disableFirst && index === 0}
+          selected={index === 0}
         >
           {option}
         </option>
