@@ -13,7 +13,8 @@ const Playground = () => {
 
   const handleSSEError = (error: Event) => {
     // Handle SSE errors
-    const errorMessage = error.toString() || "Unknown error occurred";
+    const errorMessage =
+      JSON.stringify({ ...error }, null, 2) || "Unknown error occurred";
     console.error("SSE Error:", error);
     setError(errorMessage);
   };
@@ -31,7 +32,7 @@ const Playground = () => {
         )}
         {/* SSEComponent for real-time updates */}
         <SSEComponent
-          url="/your-sse-channel"
+          url="localhost:3000/voting/join"
           onMessage={handleSSEMessage}
           onError={handleSSEError}
         />

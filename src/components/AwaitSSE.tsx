@@ -17,6 +17,7 @@ const AwaitSSE: React.FC<SSEComponentProps> = ({ url, onMessage, onError }) => {
     const eventSource = new EventSource(url);
 
     eventSource.addEventListener("message", (event: SSEMessageEvent) => {
+      console.log("message recvieved : ", event.data);
       onMessage(JSON.parse(event.data));
     });
 
