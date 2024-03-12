@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PlusIcon from "../svgs/plus";
 import ModalButton from "../components/ModalButton";
 import Button from "../components/basics/Button";
@@ -10,6 +10,19 @@ import PlayIcon from "../svgs/play";
 
 const HomePage: React.FC = () => {
   const [cardData, setCardData] = useState<CardData[]>([]);
+
+  useEffect(() => {
+    // Retrieve cardData from local storage on component mount
+    const storedData = localStorage.getItem("cardData");
+    if (storedData) {
+      setCardData(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save cardData to local storage whenever it changes
+    localStorage.setItem("cardData", JSON.stringify(cardData));
+  }, [cardData]);
 
   const clearCard = () => {
     const titleInput = document.getElementById("title") as HTMLInputElement;

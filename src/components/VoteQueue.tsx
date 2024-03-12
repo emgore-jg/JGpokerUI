@@ -7,7 +7,7 @@ interface props extends React.AllHTMLAttributes<HTMLDivElement> {
 function VoteQueue({ className = "", cards, ...rest }: props) {
   return (
     <div
-      className={`card mr-4 h-full w-1/6 gap-2 overflow-scroll bg-secondary p-4 text-neutral-content ${className}`}
+      className={`card mr-4 h-full w-1/6 gap-2 overflow-scroll bg-secondary p-4 text-secondary-content ${className}`}
       {...rest}
     >
       <p>{cards.length} cards total</p>
