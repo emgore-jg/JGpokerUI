@@ -4,6 +4,7 @@ export default {
   theme: {
     extend: {
       maxHeight: {
+        "30vh": "30vh",
         "50vh": "50vh",
       },
     },
@@ -27,7 +28,7 @@ export default {
           "info-content": "#161719",
           success: "#65a30d",
           "success-content": "#161719",
-          warning: "#eab308",
+          warning: "#F2C53E",
           "warning-content": "#161719",
           error: "#ef4444",
           "error-content": "#161719",

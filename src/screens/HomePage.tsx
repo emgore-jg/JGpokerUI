@@ -1,18 +1,28 @@
-import React, { useState } from "react";
-import PlusIcon from "../assets/plus";
+import React, { useEffect, useState } from "react";
+import PlusIcon from "../svgs/plus";
 import ModalButton from "../components/ModalButton";
-import Button from "../components/Button";
+import Button from "../components/basics/Button";
 import CardSummary from "../components/CardSummary";
-
-interface CardData {
-  title: string;
-  issueNum: number;
-  description: string;
-  vote: string;
-}
+import Input from "../components/basics/Input";
+import Textarea from "../components/basics/Textarea";
+import Select from "../components/basics/Select";
+import PlayIcon from "../svgs/play";
 
 const HomePage: React.FC = () => {
   const [cardData, setCardData] = useState<CardData[]>([]);
+
+  useEffect(() => {
+    // Retrieve cardData from local storage on component mount
+    const storedData = localStorage.getItem("cardData");
+    if (storedData) {
+      setCardData(JSON.parse(storedData));
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save cardData to local storage whenever it changes
+    localStorage.setItem("cardData", JSON.stringify(cardData));
+  }, [cardData]);
 
   const clearCard = () => {
     const titleInput = document.getElementById("title") as HTMLInputElement;
@@ -78,7 +88,7 @@ const HomePage: React.FC = () => {
       descriptionInput.classList.remove("textarea-error");
     }
 
-    if (voteSelect && voteSelect.value.trim() === "T-shirt Size") {
+    if (voteSelect && voteSelect.selectedIndex === 0) {
       voteSelect.classList.add("select-error");
       isValid = false;
     } else {
@@ -111,72 +121,66 @@ const HomePage: React.FC = () => {
 
   return (
     <section id="homePage" className="flex h-full w-full flex-col gap-4 p-4">
-      <ModalButton
-        modalID="create-card-modal"
-        buttonText={
-          <>
-            <PlusIcon className="h-1/2" /> Create Card
-          </>
-        }
-        modalContent={
-          <div className="flex max-h-screen flex-col gap-2">
-            <h1 className="mb-4 text-lg font-bold">Create Card</h1>
-            <label className="form-control w-full">
-              <span className="label-text">Title*</span>
-              <input
-                type="text"
-                className="input input-bordered w-full"
-                id="title"
-              />
-            </label>
-            <label className="form-control w-full">
-              <span className="label-text">Issue #*</span>
-              <input
-                type="number"
-                className="input input-bordered w-full"
-                id="issueNum"
-              />
-            </label>
-            <label className="form-control w-full">
-              <span className="label-text">Description*</span>
-              <textarea
-                className="max-h-50vh textarea textarea-bordered"
-                id="description"
-              ></textarea>
-            </label>
-            <label className="form-control w-full">
-              <span className="label-text">Vote*</span>
-              <select className="select select-bordered w-full" id="vote">
-                <option disabled selected>
-                  T-shirt Size
-                </option>
-                <option>XS</option>
-                <option>SM</option>
-                <option>LG</option>
-                <option>XL</option>
-              </select>
-            </label>
+      <div className="flex gap-4">
+        <ModalButton
+          modalID="create-card-modal"
+          buttonText={
+            <>
+              <PlusIcon className="h-1/2" /> Create Card
+            </>
+          }
+          modalContent={
+            <div className="flex max-h-screen flex-col gap-2">
+              <h1 className="mb-4 text-lg font-bold">Create Card</h1>
+              <label className="form-control w-full">
+                <span className="label-text">Title*</span>
+                <Input type="text" id="title" />
+              </label>
+              <label className="form-control w-full">
+                <span className="label-text">Issue #*</span>
+                <Input type="number" id="issueNum" />
+              </label>
+              <label className="form-control w-full">
+                <span className="label-text">Description*</span>
+                <Textarea id="description" className="max-h-50vh" />
+              </label>
+              <label className="form-control w-full">
+                <span className="label-text">Vote*</span>
+                <Select
+                  id="vote"
+                  options={["T-shirt Size", "XS", "SM", "MD", "LG", "XL"]}
+                  disableFirst={true}
+                />
+              </label>
 
-            <div className="flex flex-row justify-between">
-              <Button className="btn-error" onClick={handleAbortCard}>
-                Cancel
-              </Button>
-              <Button className="btn-primary" onClick={handleCreateCard}>
-                Create
-              </Button>
+              <div className="flex flex-row justify-between">
+                <Button className="btn-error" onClick={handleAbortCard}>
+                  Cancel
+                </Button>
+                <Button className="btn-primary" onClick={handleCreateCard}>
+                  Create
+                </Button>
+              </div>
             </div>
-          </div>
-        }
-      />
+          }
+        />
+        <Button
+          className="btn-primary"
+          onClick={() => {
+            window.location.href = "/voting";
+          }}
+        >
+          <PlayIcon className="h-1/2" />
+          Start Game
+        </Button>
+      </div>
+
       <div className="flex flex-wrap justify-center gap-4">
         {cardData.map((data, index) => (
           <CardSummary
             key={index}
-            title={data.title}
-            issueNum={data.issueNum}
-            description={data.description}
+            cardData={data}
             //isCompact={true}
-            vote={data.vote}
           />
         ))}
       </div>
